@@ -41,6 +41,6 @@ public class TurnoController {
 
     @GetMapping("/all")
     public List<TurnoDTO> obtenerTodosTurnos() {
-        return turnoService.obtenerTodosTurnosDTO();
+        return turnoService.obtenerTodosTurnos();
     }
 }
