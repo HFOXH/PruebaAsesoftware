@@ -57,4 +57,16 @@ public class TurnoService {
     public List<Turno> obtenerTurnos(UUID servicioId, LocalDate fechaInicio, LocalDate fechaFin) {
         return turnoRepository.findByServicioIdAndFechaBetween(servicioId, fechaInicio, fechaFin);
     }
+
+    public List<TurnoDTO> obtenerTodosTurnos() {
+        return turnoRepository.findAll().stream()
+                .map(t -> new TurnoDTO(
+                    t.getComercio().getNombre(),
+                    t.getServicio().getNombre(),
+                    t.getFecha(),
+                    t.getHoraInicio(),
+                    t.getHoraFin()
+                ))
+                .toList();
+    }
 }

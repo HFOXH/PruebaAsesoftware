@@ -2,6 +2,8 @@ package com.example.pruebaAsesoftware.Servicio;
 
 import com.example.pruebaAsesoftware.Comercio.Comercio;
 import com.example.pruebaAsesoftware.Turno.Turno;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.GenericGenerator;

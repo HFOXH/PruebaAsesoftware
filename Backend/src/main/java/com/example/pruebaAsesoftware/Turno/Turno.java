@@ -2,6 +2,8 @@ package com.example.pruebaAsesoftware.Turno;
 
 import com.example.pruebaAsesoftware.Comercio.Comercio;
 import com.example.pruebaAsesoftware.Servicio.Servicio;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
@@ -23,6 +25,7 @@ public class Turno {
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
     @Column(name = "id", updatable = false, nullable = false, columnDefinition = "UUID")
+    @JsonIgnore
     private UUID id;
 
     @Column(nullable = false)

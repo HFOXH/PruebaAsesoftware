@@ -1,0 +1,66 @@
+<header class="flex justify-between items-center px-8 py-5 bg-white shadow-md rounded-b-xl">
+    <h1 class="text-3xl font-bold text-gray-800">Generación de Turnos</h1>
+    <div class="flex items-center gap-3">
+        <span class="text-gray-600 font-semibold">Admin</span>
+        <div class="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center">
+            <svg class="w-6 h-6 text-gray-600" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M10 10a4 4 0 100-8 4 4 0 000 8zM2 18a8 8 0 1116 0H2z" />
+            </svg>
+        </div>
+    </div>
+</header>
+
+<section class="p-8 max-w-6xl mx-auto">
+    <div class="grid md:grid-cols-5 sm:grid-cols-2 gap-5 mb-6">
+        <select
+            class="border border-gray-300 bg-white p-3 rounded-lg shadow-sm focus:ring-2 focus:ring-purple-500 w-full"
+            [(ngModel)]="turno.comercio">
+            <option disabled selected value="">Comercio</option>
+            <option *ngFor="let c of comercios" [value]="c">{{ c }}</option>
+        </select>
+
+        <select
+            class="border border-gray-300 bg-white p-3 rounded-lg shadow-sm focus:ring-2 focus:ring-purple-500 w-full"
+            [(ngModel)]="turno.servicio">
+            <option disabled selected value="">Servicio</option>
+            <option *ngFor="let s of servicios" [ngValue]="s">{{ s.nombre }}</option>
+        </select>
+
+        <input type="date"
+            class="border border-gray-300 p-3 rounded-lg shadow-sm focus:ring-2 focus:ring-purple-500 w-full"
+            [(ngModel)]="turno.fechaInicio" />
+
+        <input type="date"
+            class="border border-gray-300 p-3 rounded-lg shadow-sm focus:ring-2 focus:ring-purple-500 w-full"
+            [(ngModel)]="turno.fechaFin" />
+
+        <button
+            class="bg-gradient-to-r from-purple-600 to-indigo-600 text-white rounded-lg px-4 py-3 font-semibold hover:opacity-90 transition w-full cursor-pointer"
+            (click)="generarTurno()">
+            Generar
+        </button>
+    </div>
+
+    <div class="overflow-x-auto shadow rounded-lg">
+        <table class="w-full table-auto border-collapse bg-white rounded-lg overflow-hidden">
+            <thead class="bg-purple-50 text-purple-800 uppercase text-sm">
+                <tr>
+                    <th class="p-3 text-left">Comercio</th>
+                    <th class="p-3 text-left">Servicio</th>
+                    <th class="p-3 text-left">Fecha Turno</th>
+                    <th class="p-3 text-left">Hora Inicio</th>
+                    <th class="p-3 text-left">Hora Fin</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let t of turnos" class=" hover:bg-purple-50 transition">
+                    <td class="p-3">{{ t.comercio }}</td>
+                    <td class="p-3">{{ t.servicio }}</td>
+                    <td class="p-3">{{ t.fecha }}</td>
+                    <td class="p-3">{{ t.horaInicio }}</td>
+                    <td class="p-3">{{ t.horaFin }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
